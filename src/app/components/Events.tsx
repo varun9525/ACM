@@ -8,12 +8,10 @@ import ParticleField from "./ParticleField";
 
 const svitCampus = new URL("../../assets/38cc7112b553bd6144b9a84e15b6b77217b38a0c.png", import.meta.url).href;
 
-const categories = ["All", "Inauguration", "Workshop", "Talk", "Competition"];
+const categories = ["All", "Inauguration"];
 
 const events = [
   { id: 1, title: "Inauguration Ceremony", date: "Apr 02, 2026", time: "10 AM - 1 PM", location: "SVIT Auditorium", category: "Inauguration", desc: "Grand inauguration of SVIT ACM Student Chapter. Join us for the official launch with keynote speeches, chapter introduction, and networking.", upcoming: true, img: svitCampus, color: "from-blue-500 to-cyan-400" },
-  { id: 2, title: "Web Dev Workshop", date: "Apr 20, 2026", time: "10 AM - 4 PM", location: "Lab 3, IT Dept", category: "Workshop", desc: "Hands-on workshop on modern web development with React.", upcoming: true, img: "https://images.unsplash.com/photo-1689236673934-66f8e9d9279b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3Jrc2hvcCUyMHByb2dyYW1taW5nJTIwbGFwdG9wfGVufDF8fHx8MTc3NDY4OTAxNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", color: "from-purple-500 to-pink-500" },
-  { id: 3, title: "DSA Bootcamp", date: "May 10, 2026", time: "9 AM - 5 PM", location: "Lab 1, CS Dept", category: "Workshop", desc: "Intensive bootcamp covering essential data structures and algorithms.", upcoming: true, img: "https://images.unsplash.com/photo-1719845853806-1c54b0ed37c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjB3b3Jrc2hvcCUyMGNsYXNzcm9vbXxlbnwxfHx8fDE3NzQ2ODkwMTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", color: "from-emerald-500 to-teal-400" },
 ];
 
 export default function Events() {
@@ -76,7 +74,7 @@ export default function Events() {
           <AnimatePresence mode="wait">
             {filtered.length === 0 ? (
               <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-center py-20 text-white/20" style={{ fontSize: 15 }}>
-                No events found.
+                {tab === "past" ? "No events found in past events." : "No upcoming events right now."}
               </motion.div>
             ) : (
               <motion.div key={tab + filter} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
