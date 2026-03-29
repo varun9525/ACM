@@ -5,6 +5,7 @@ import About from "./components/About";
 import Events from "./components/Events";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
+import EventDetails from "./components/EventDetails";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
       { path: "events", Component: Events },
       { path: "team", Component: Team },
       { path: "contact", Component: Contact },
+      { path: "events/inauguration", Component: EventDetails },
     ],
   },
 ]);

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router";
+import RollingText from "./RollingText";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import acmLogo from "../../assets/d16feed6d1c3e6975f13d701bab37fa53bf54d76.png";
@@ -57,7 +58,7 @@ export default function Navbar() {
             <Link
               key={l.to}
               to={l.to}
-              className={`relative px-4 py-2 rounded-lg transition-all ${
+              className={`group/btn relative px-4 py-2 rounded-lg transition-all ${
                 location.pathname === l.to
                   ? "text-[#00D4FF]"
                   : "text-white/60 hover:text-white"
@@ -71,7 +72,9 @@ export default function Navbar() {
                   transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                 />
               )}
-              <span className="relative z-10">{l.label}</span>
+              <span className="relative z-10">
+                 <RollingText text={l.label} activeColor={location.pathname === l.to ? "text-[#00D4FF]" : "text-white"} />
+              </span>
             </Link>
           ))}
         </div>
@@ -79,12 +82,14 @@ export default function Navbar() {
         {/* CTA */}
         <Link
           to="/contact"
-          className="hidden md:inline-flex relative group px-6 py-2.5 rounded-lg overflow-hidden"
+          className="hidden md:inline-flex relative group group/btn px-6 py-2.5 rounded-lg overflow-hidden"
           style={{ fontSize: 13, fontWeight: 600, fontFamily: "'Space Grotesk', sans-serif" }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] transition-all group-hover:opacity-90" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] blur-lg opacity-40 group-hover:opacity-60 transition-opacity" />
-          <span className="relative text-white">Join Us</span>
+          <span className="relative text-white flex items-center justify-center">
+             <RollingText text="Join Us" activeColor="text-white" />
+          </span>
         </Link>
 
         {/* Mobile */}

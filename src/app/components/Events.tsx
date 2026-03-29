@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Calendar, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+
 import TiltCard from "./TiltCard";
 import GlowText from "./GlowText";
 import ParticleField from "./ParticleField";
+import RollingText from "./RollingText";
 
 const svitCampus = new URL("../../assets/38cc7112b553bd6144b9a84e15b6b77217b38a0c.png", import.meta.url).href;
 
@@ -46,11 +49,11 @@ export default function Events() {
                 <button
                   key={t}
                   onClick={() => setTab(t)}
-                  className={`relative px-7 py-2.5 rounded-lg capitalize transition-all ${tab === t ? "text-white" : "text-white/40"}`}
+                  className={`group group/btn relative px-7 py-2.5 rounded-lg capitalize transition-all ${tab === t ? "text-white" : "text-white/40"}`}
                   style={{ fontSize: 13, fontWeight: 600 }}
                 >
                   {tab === t && <motion.div layoutId="eventTab" className="absolute inset-0 bg-white/10 rounded-lg border border-white/10" transition={{ type: "spring", bounce: 0.2, duration: 0.5 }} />}
-                  <span className="relative">{t} Events</span>
+                  <span className="relative flex"><RollingText text={`${t} Events`} activeColor={tab === t ? "text-white" : "text-[#00D4FF]"} /></span>
                 </button>
               ))}
             </div>
@@ -62,10 +65,10 @@ export default function Events() {
               <button
                 key={c}
                 onClick={() => setFilter(c)}
-                className={`relative px-5 py-2 rounded-full border transition-all ${filter === c ? "border-[#0066FF]/50 text-[#00D4FF] bg-[#0066FF]/10" : "border-white/5 text-white/30 hover:text-white/60 hover:border-white/15"}`}
+                className={`group group/btn relative px-5 py-2 rounded-full border transition-all ${filter === c ? "border-[#0066FF]/50 text-[#00D4FF] bg-[#0066FF]/10" : "border-white/5 text-white/30 hover:text-white/60 hover:border-white/15"}`}
                 style={{ fontSize: 12, fontWeight: 600 }}
               >
-                {c}
+                <RollingText text={c} activeColor={filter === c ? "text-[#00D4FF]" : "text-white"} />
               </button>
             ))}
           </div>
@@ -118,9 +121,9 @@ export default function Events() {
                         </div>
 
                         {e.upcoming && (
-                          <button className="w-full py-3 rounded-xl bg-gradient-to-r from-[#0066FF] to-[#00D4FF] text-white hover:opacity-90 transition-opacity flex items-center justify-center gap-2" style={{ fontSize: 13, fontWeight: 600 }}>
-                            Register Now <ArrowRight size={14} />
-                          </button>
+                          <Link to="/events/inauguration" className="group group/btn w-full py-3 rounded-xl bg-gradient-to-r from-[#0066FF] to-[#00D4FF] text-white hover:opacity-90 transition-opacity flex items-center justify-center gap-2 overflow-hidden" style={{ fontSize: 13, fontWeight: 600 }}>
+                            <RollingText text="Explore Details" /> <ArrowRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                          </Link>
                         )}
                       </div>
                     </motion.div>

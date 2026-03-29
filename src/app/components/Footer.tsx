@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Github, Linkedin, Instagram, Mail, MapPin, ArrowUpRight } from "lucide-react";
 import acmLogo from "../../assets/d16feed6d1c3e6975f13d701bab37fa53bf54d76.png";
+import RollingText from "./RollingText";
 
 export default function Footer() {
   return (
@@ -31,8 +32,8 @@ export default function Footer() {
           <div>
             <h4 style={{ fontSize: 12, fontWeight: 600, letterSpacing: 2 }} className="text-white/50 uppercase mb-4">Navigate</h4>
             {["About", "Events", "Team", "Contact"].map((l) => (
-              <Link key={l} to={`/${l.toLowerCase()}`} className="group flex items-center gap-1 py-1.5 text-white/30 hover:text-[#00D4FF] transition-colors" style={{ fontSize: 13 }}>
-                {l} <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Link key={l} to={`/${l.toLowerCase()}`} className="group group/btn flex items-center gap-1 py-1.5 text-white/30 hover:text-[#00D4FF] transition-colors" style={{ fontSize: 13 }}>
+                <RollingText text={l} activeColor="text-[#00D4FF]" /> <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
             ))}
           </div>
@@ -40,8 +41,8 @@ export default function Footer() {
           <div>
             <h4 style={{ fontSize: 12, fontWeight: 600, letterSpacing: 2 }} className="text-white/50 uppercase mb-4">Resources</h4>
             {["ACM Digital Library", "Membership", "Code of Ethics", "Research"].map((l) => (
-              <a key={l} href="#" className="group flex items-center gap-1 py-1.5 text-white/30 hover:text-[#00D4FF] transition-colors" style={{ fontSize: 13 }}>
-                {l} <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+              <a key={l} href="#" className="group group/btn flex items-center gap-1 py-1.5 text-white/30 hover:text-[#00D4FF] transition-colors" style={{ fontSize: 13 }}>
+                <RollingText text={l} activeColor="text-[#00D4FF]" /> <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
             ))}
           </div>

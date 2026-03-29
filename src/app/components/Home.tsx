@@ -6,6 +6,7 @@ import ParticleField from "./ParticleField";
 import TiltCard from "./TiltCard";
 import GlowText from "./GlowText";
 import AnimatedCounter from "./AnimatedCounter";
+import RollingText from "./RollingText";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import acmLogo from "../../assets/d16feed6d1c3e6975f13d701bab37fa53bf54d76.png";
 import acmTextLogo from "../../assets/757ae12a6ac34d5e0f9d1d6febf918ba3d0766c4.png";
@@ -91,14 +92,14 @@ export default function Home() {
             transition={{ delay: 1.2 }}
             className="flex flex-wrap justify-center gap-4"
           >
-            <Link to="/contact" className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-xl overflow-hidden" style={{ fontSize: 15, fontWeight: 600 }}>
+            <Link to="/contact" className="group group/btn relative inline-flex items-center gap-2 px-8 py-4 rounded-xl overflow-hidden" style={{ fontSize: 15, fontWeight: 600 }}>
               <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF]" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] blur-xl opacity-50 group-hover:opacity-80 transition-opacity" />
-              <span className="relative">Join the Chapter</span>
+              <span className="relative flex items-center"><RollingText text="Join the Chapter" /></span>
               <ArrowRight size={18} className="relative group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link to="/events" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/10 text-white/70 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all backdrop-blur-sm" style={{ fontSize: 15, fontWeight: 600 }}>
-              Explore Events
+            <Link to="/events" className="group/btn inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/10 text-white/70 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all backdrop-blur-sm" style={{ fontSize: 15, fontWeight: 600 }}>
+              <RollingText text="Explore Events" activeColor="text-white" />
             </Link>
           </motion.div>
 
@@ -176,8 +177,8 @@ export default function Home() {
             <p style={{ fontSize: 15 }} className="text-white/40 mb-8 leading-relaxed">
               Through hackathons, workshops, guest lectures, and collaborative projects, we bridge the gap between academics and real-world industry skills.
             </p>
-            <Link to="/about" className="group inline-flex items-center gap-2 text-[#00D4FF] hover:gap-3 transition-all" style={{ fontSize: 14, fontWeight: 600 }}>
-              Learn more about us <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            <Link to="/about" className="group group/btn inline-flex items-center gap-2 text-[#00D4FF] hover:gap-3 transition-all" style={{ fontSize: 14, fontWeight: 600 }}>
+              <RollingText text="Learn more about us" activeColor="text-[#00D4FF]" /> <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </div>
@@ -234,8 +235,8 @@ export default function Home() {
                 Upcoming <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] to-[#00D4FF]">Events</span>
               </h2>
             </div>
-            <Link to="/events" className="hidden sm:inline-flex items-center gap-2 text-[#00D4FF] hover:gap-3 transition-all" style={{ fontSize: 13, fontWeight: 600 }}>
-              View all <ArrowRight size={16} />
+            <Link to="/events" className="hidden sm:inline-flex group group/btn items-center gap-2 text-[#00D4FF] hover:gap-3 transition-all" style={{ fontSize: 13, fontWeight: 600 }}>
+              <RollingText text="View all" activeColor="text-[#00D4FF]" /> <ArrowRight size={16} />
             </Link>
           </motion.div>
 
@@ -261,9 +262,9 @@ export default function Home() {
                     <h3 style={{ fontSize: 20, fontWeight: 700 }} className="text-white mb-2">{e.title}</h3>
                     <p style={{ fontSize: 13 }} className="text-white/30 mb-6">{e.desc}</p>
 
-                    <button className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all flex items-center justify-center gap-2" style={{ fontSize: 13, fontWeight: 600 }}>
-                      Register Now <ArrowRight size={14} />
-                    </button>
+                    <Link to="/events/inauguration" className="group group/btn w-full py-3 rounded-xl bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all flex items-center justify-center gap-2 overflow-hidden" style={{ fontSize: 13, fontWeight: 600 }}>
+                      <RollingText text="Explore Details" activeColor="text-white" /> <ArrowRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </Link>
                   </div>
                 </motion.div>
               </TiltCard>
@@ -307,10 +308,10 @@ export default function Home() {
           </h2>
           <p style={{ fontSize: 17 }} className="text-white/40 mb-10">Join SVIT ACM Student Chapter and be part of a thriving tech community.</p>
 
-          <Link to="/contact" className="group relative inline-flex items-center gap-2 px-10 py-5 rounded-2xl overflow-hidden" style={{ fontSize: 16, fontWeight: 700 }}>
+          <Link to="/contact" className="group group/btn relative inline-flex items-center gap-2 px-10 py-5 rounded-2xl overflow-hidden" style={{ fontSize: 16, fontWeight: 700 }}>
             <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF]" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] blur-2xl opacity-40 group-hover:opacity-70 transition-opacity" />
-            <span className="relative">Become a Member</span>
+            <span className="relative flex items-center"><RollingText text="Become a Member" /></span>
             <ArrowRight size={20} className="relative group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

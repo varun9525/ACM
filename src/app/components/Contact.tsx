@@ -4,6 +4,7 @@ import { Mail, MapPin, Phone, Send, CheckCircle, ArrowRight } from "lucide-react
 import TiltCard from "./TiltCard";
 import GlowText from "./GlowText";
 import ParticleField from "./ParticleField";
+import RollingText from "./RollingText";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -91,10 +92,10 @@ export default function Contact() {
                 <h3 style={{ fontSize: 24, fontWeight: 700, fontFamily: "'Orbitron', sans-serif" }} className="text-white mb-2">Message Sent!</h3>
                 <p style={{ fontSize: 14 }} className="text-white/35 mb-8">We'll get back to you within 24 hours.</p>
                 <button onClick={() => { setSubmitted(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
-                  className="px-6 py-3 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] text-white rounded-xl hover:opacity-90 transition-opacity"
+                  className="group group/btn px-6 py-3 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] text-white rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center overflow-hidden"
                   style={{ fontSize: 14, fontWeight: 600 }}
                 >
-                  Send Another
+                  <RollingText text="Send Another" />
                 </button>
               </motion.div>
             ) : (
@@ -146,9 +147,9 @@ export default function Contact() {
                   />
                 </div>
 
-                <button type="submit" className="group w-full py-4 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] text-white rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2 relative overflow-hidden" style={{ fontSize: 15, fontWeight: 600 }}>
+                <button type="submit" className="group group/btn w-full py-4 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] text-white rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2 relative overflow-hidden" style={{ fontSize: 15, fontWeight: 600 }}>
                   <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] blur-xl opacity-40" />
-                  <span className="relative">Send Message</span>
+                  <span className="relative flex items-center"><RollingText text="Send Message" /></span>
                   <Send size={16} className="relative group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
               </form>
