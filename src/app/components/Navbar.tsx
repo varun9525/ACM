@@ -23,6 +23,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -34,16 +38,16 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-18">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-[72px]">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group min-w-0">
           <div className="relative">
             <div className="absolute -inset-1 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] rounded-lg blur opacity-40 group-hover:opacity-70 transition-opacity" />
             <img src={acmLogo} alt="ACM Logo" className="relative w-10 h-10 object-contain" style={{ filter: 'invert(1) hue-rotate(180deg)', mixBlendMode: 'screen' }} />
           </div>
-          <div className="flex flex-col leading-tight">
-            <span style={{ fontSize: 16, fontWeight: 700, fontFamily: "'Space Grotesk', sans-serif" }} className="text-white">SVIT ACM</span>
-            <span style={{ fontSize: 9, fontWeight: 500, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70">STUDENT CHAPTER</span>
+          <div className="flex flex-col leading-tight min-w-0">
+            <span style={{ fontSize: 15, fontWeight: 700, fontFamily: "'Space Grotesk', sans-serif" }} className="text-white truncate">SVIT ACM</span>
+            <span style={{ fontSize: 9, fontWeight: 500, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="hidden sm:block text-[#00D4FF]/70">STUDENT CHAPTER</span>
           </div>
         </Link>
 
@@ -84,7 +88,11 @@ export default function Navbar() {
         </Link>
 
         {/* Mobile */}
-        <button className="md:hidden p-2 text-white" onClick={() => setOpen(!open)}>
+        <button
+          aria-label={open ? "Close menu" : "Open menu"}
+          className="md:hidden inline-flex items-center justify-center p-2.5 rounded-lg border border-white/15 bg-black/40 text-white/90 hover:text-white hover:bg-white/10 flex-shrink-0"
+          onClick={() => setOpen(!open)}
+        >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
