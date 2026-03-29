@@ -40,28 +40,6 @@ export default function About() {
         </motion.div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
-          {[
-            { icon: Target, title: "Our Mission", text: "To foster a community where students can explore, learn, and excel in computing. We bridge the gap between academics and industry through hands-on learning, mentorship, and collaborative projects.", color: "from-blue-500 to-cyan-400" },
-            { icon: Eye, title: "Our Vision", text: "To be the leading student tech community in Gujarat, recognized for producing innovative thinkers and skilled professionals who contribute to the advancement of computing.", color: "from-purple-500 to-pink-500" },
-          ].map((item, i) => (
-            <TiltCard key={item.title}>
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 hover:border-white/[0.15] transition-all h-full"
-              >
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 shadow-lg`}>
-                  <item.icon size={26} className="text-white" />
-                </div>
-                <h3 style={{ fontSize: 22, fontWeight: 700 }} className="text-white mb-3">{item.title}</h3>
-                <p style={{ fontSize: 15 }} className="text-white/35 leading-relaxed">{item.text}</p>
-              </motion.div>
-            </TiltCard>
-          ))}
-        </div>
-      </section>
-
       {/* What is ACM */}
       <section className="py-24 relative">
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[150px]" />
@@ -88,6 +66,28 @@ export default function About() {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
+          {[
+            { icon: Target, title: "Our Mission", text: "To foster a community where students can explore, learn, and excel in computing. We bridge the gap between academics and industry through hands-on learning, mentorship, and collaborative projects.", color: "from-blue-500 to-cyan-400" },
+            { icon: Eye, title: "Our Vision for SVIT", text: "Our goal is to foster a strong coding culture and bridge the gap between academic learning and industry standards. Through workshops, hackathons, and guest lectures, the ACM SVIT chapter aims to empower students to build real-world solutions.", color: "from-purple-500 to-pink-500" },
+          ].map((item, i) => (
+            <TiltCard key={item.title}>
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 hover:border-white/[0.15] transition-all h-full"
+              >
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 shadow-lg`}>
+                  <item.icon size={26} className="text-white" />
+                </div>
+                <h3 style={{ fontSize: 22, fontWeight: 700 }} className="text-white mb-3">{item.title}</h3>
+                <p style={{ fontSize: 15 }} className="text-white/35 leading-relaxed">{item.text}</p>
+              </motion.div>
+            </TiltCard>
+          ))}
         </div>
       </section>
 
