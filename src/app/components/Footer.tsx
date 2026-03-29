@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="relative bg-black border-t border-white/5">
       {/* Gradient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-[#0066FF]/50 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90%] md:w-[600px] h-px bg-gradient-to-r from-transparent via-[#0066FF]/50 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -60,7 +60,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/5 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div className="border-t border-white/5 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
           <p style={{ fontSize: 12 }} className="text-white/20">&copy; 2026 SVIT ACM Student Chapter</p>
           <p style={{ fontSize: 12 }} className="text-white/20">Built with passion & code</p>
         </div>

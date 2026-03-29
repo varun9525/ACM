@@ -7,6 +7,7 @@ import TiltCard from "./TiltCard";
 import GlowText from "./GlowText";
 import AnimatedCounter from "./AnimatedCounter";
 import RollingText from "./RollingText";
+import RevealHeading from "./RevealHeading";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import svitCampus from "../../assets/38cc7112b553bd6144b9a84e15b6b77217b38a0c.png";
 import svitPhoto from "../../../SVIT.jpeg";
@@ -29,7 +30,7 @@ const eventGalleryPlaceholders = [
   "Event Photo 06",
 ];
 
-const whatsappCommunityUrl = "https://chat.whatsapp.com/";
+const whatsappCommunityUrl = "https://chat.whatsapp.com/DApcf2RsuyB1kIFlhHrmA9";
 
 export default function Home() {
   const heroRef = useRef(null);
@@ -56,7 +57,7 @@ export default function Home() {
 
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-5xl mx-auto px-4 text-center">
           {/* Main heading */}
-          <h1 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif", lineHeight: 1.1 }} className="text-5xl sm:text-6xl lg:text-8xl mb-6">
+          <h1 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif", lineHeight: 1.1 }} className="text-4xl sm:text-6xl lg:text-8xl mb-6">
             <GlowText text="SVIT ACM" className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/80" delay={0.3} />
             <GlowText text="Student Chapter" className="block text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] via-[#00D4FF] to-[#0066FF]" delay={0.6} />
           </h1>
@@ -138,9 +139,11 @@ export default function Home() {
 
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">Who We Are</span>
-            <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl sm:text-4xl text-white mb-4 leading-tight">
-              ACM SVIT Student Chapter
-            </h2>
+            <RevealHeading>
+              <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl sm:text-4xl mb-4 leading-tight">
+                ACM SVIT Student Chapter
+              </h2>
+            </RevealHeading>
             <p style={{ fontSize: 18, fontWeight: 500 }} className="text-white/70 mb-6 leading-relaxed">
               Advancing Computing as a Science & Profession
             </p>
@@ -224,13 +227,13 @@ export default function Home() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#0066FF]/10 rounded-full blur-[200px]" />
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative max-w-3xl mx-auto px-4 text-center"
-        >
-          <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl sm:text-5xl text-white mb-6 leading-tight">
-            Ready to Start Your{" "}
+           initial={{ opacity: 0, y: 40 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           className="relative max-w-3xl mx-auto px-4 text-center"
+         >
+           <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-2xl sm:text-5xl text-white mb-6 leading-tight">
+             Ready to Start Your{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] to-[#00D4FF]">Journey?</span>
           </h2>
           <p style={{ fontSize: 17 }} className="text-white/40 mb-10">Join our WhatsApp community and be part of a thriving tech network.</p>

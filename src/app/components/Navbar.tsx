@@ -80,8 +80,10 @@ export default function Navbar() {
         </div>
 
         {/* CTA */}
-        <Link
-          to="/contact"
+        <a
+          href="https://chat.whatsapp.com/DApcf2RsuyB1kIFlhHrmA9"
+          target="_blank"
+          rel="noreferrer"
           className="hidden md:inline-flex relative group group/btn px-6 py-2.5 rounded-lg overflow-hidden"
           style={{ fontSize: 13, fontWeight: 600, fontFamily: "'Space Grotesk', sans-serif" }}
         >
@@ -90,7 +92,7 @@ export default function Navbar() {
           <span className="relative text-white flex items-center justify-center">
              <RollingText text="Join Us" activeColor="text-white" />
           </span>
-        </Link>
+        </a>
 
         {/* Mobile */}
         <button
@@ -131,9 +133,9 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
-              <Link to="/contact" onClick={() => setOpen(false)} className="block mt-3 text-center px-5 py-3 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] text-white rounded-lg" style={{ fontSize: 14, fontWeight: 600 }}>
+              <a href="https://chat.whatsapp.com/DApcf2RsuyB1kIFlhHrmA9" target="_blank" rel="noreferrer" onClick={() => setOpen(false)} className="block mt-3 text-center px-5 py-3 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] text-white rounded-lg" style={{ fontSize: 14, fontWeight: 600 }}>
                 Join Us
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

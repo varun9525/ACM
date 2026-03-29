@@ -17,7 +17,7 @@ export default function Layout() {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050510]">
+    <div className="min-h-screen flex flex-col bg-[#050510] overflow-x-hidden w-full">
       {/* Site Loader — only shown on initial page load of the homepage */}
       {!isLoaderDone && (
         <SiteLoader
