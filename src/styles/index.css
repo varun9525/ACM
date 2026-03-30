@@ -2,6 +2,24 @@
 @import './tailwind.css';
 @import './theme.css';
 
+/* ── Global: prevent horizontal scroll & white overscroll flash ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+  background-color: #050510;
+  /* Disable rubber-band overscroll on iOS that reveals white */
+  overscroll-behavior: none;
+}
+
+#root {
+  overflow-x: hidden;
+  background-color: #050510;
+}
+
 @keyframes scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
