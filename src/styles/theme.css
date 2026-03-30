@@ -135,18 +135,14 @@
 
   html {
     font-size: var(--font-size);
-    overflow-x: hidden;
-    max-width: 100vw;
     background-color: #050510;
-    /* Overscroll bounce color on iOS/Android */
-    overscroll-behavior-y: none;
+    /* No overflow-x:hidden on html — breaks iOS Safari touch scrolling */
   }
 
   body {
-    overflow-x: hidden;
-    max-width: 100vw;
+    overflow-x: clip;
     background-color: #050510;
-    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
   }
 
   h1 {

@@ -7,12 +7,16 @@
   box-sizing: border-box;
 }
 
-html, body {
-  overflow-x: hidden;
-  max-width: 100%;
+html {
   background-color: #050510;
-  /* Disable rubber-band overscroll on iOS that reveals white */
-  overscroll-behavior: none;
+  /* DO NOT put overflow-x:hidden here — on iOS Safari it kills all touch scrolling */
+}
+
+body {
+  overflow-x: clip; /* clip prevents horizontal scroll without creating a scroll container (safe on iOS) */
+  background-color: #050510;
+  /* Only block horizontal overscroll bounce — vertical scroll momentum stays natural */
+  overscroll-behavior-x: none;
 }
 
 #root {

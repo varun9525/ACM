@@ -2,13 +2,15 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import newAcmLogo from "../../assets/67de38ad-7725-4bb3-9c2e-c2bee51045d4-1.png";
 
-export default function SiteLoader({ isInitial, onComplete }: { isInitial: boolean; onComplete: () => void }) {
+export default function SiteLoader({ isInitial, onComplete, onReveal }: { isInitial: boolean; onComplete: () => void; onReveal?: () => void }) {
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState<"zoomingIn" | "loading" | "zoomingOut" | "exiting">(
     isInitial ? "loading" : "zoomingIn"
   );
   const onCompleteRef = useRef(onComplete);
+  const onRevealRef   = useRef(onReveal);
   onCompleteRef.current = onComplete;
+  onRevealRef.current   = onReveal;
 
   // Phase: exiting → call onComplete after fade finishes
   useEffect(() => {
@@ -96,9 +98,11 @@ export default function SiteLoader({ isInitial, onComplete }: { isInitial: boole
     };
   }, [phase]);
 
-  // Phase: zoomingOut → exiting (fade out the whole overlay)
+  // Phase: zoomingOut → reveal site content immediately, then exiting after animation
   useEffect(() => {
     if (phase !== "zoomingOut") return;
+    // Reveal site content RIGHT NOW so it's visible behind the expanding diamond
+    onRevealRef.current?.();
     const t = setTimeout(() => setPhase("exiting"), 1600);
     return () => clearTimeout(t);
   }, [phase]);

@@ -9,8 +9,11 @@ let hasLoaded = false;
 
 export default function Layout() {
   const { pathname } = useLocation();
-  // Only show loader if we haven't loaded yet AND we are on the homepage.
-  const [isLoaderDone, setIsLoaderDone] = useState(hasLoaded || pathname !== "/");
+  const alreadyLoaded = hasLoaded || pathname !== "/";
+  // isLoaderDone: when to unmount the SiteLoader component
+  const [isLoaderDone, setIsLoaderDone] = useState(alreadyLoaded);
+  // isContentVisible: when to show site content (happens earlier — as soon as diamond starts zooming)
+  const [isContentVisible, setIsContentVisible] = useState(alreadyLoaded);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -22,6 +25,7 @@ export default function Layout() {
       {!isLoaderDone && (
         <SiteLoader
           isInitial={true}
+          onReveal={() => setIsContentVisible(true)}
           onComplete={() => {
             hasLoaded = true;
             setIsLoaderDone(true);
@@ -29,8 +33,13 @@ export default function Layout() {
         />
       )}
 
-      {/* Main site content */}
-      <div className="flex flex-col min-h-screen">
+      {/* Site content hidden (not unmounted) while loader plays — keeps DOM
+          alive for image/font tracking but stops GPU from painting Home.tsx's
+          heavy particle field and blur orbs at the same time as the loader */}
+      <div
+        className="flex flex-col min-h-screen"
+        style={{ visibility: isContentVisible ? "visible" : "hidden" }}
+      >
         <Navbar />
         <main className="flex-1">
           <Outlet />
