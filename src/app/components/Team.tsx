@@ -4,16 +4,50 @@ import TiltCard from "./TiltCard";
 import GlowText from "./GlowText";
 import ParticleField from "./ParticleField";
 import acmLogo from "../../assets/d16feed6d1c3e6975f13d701bab37fa53bf54d76.png";
+import shrinaPatelImg from "../../assets/shrina_patel.jpg";
+import jaynaShahImg from "../../assets/jayna_shah.jpeg";
+import principalImg from "../../assets/principal.jpg.jpeg";
+import suhaniImg from "../../assets/Suhani_photo.jpeg";
+import prishaImg from "../../assets/Prisha_Desai.png";
+import varunImg from "../../assets/Varun_Patel.jpg";
+import aaryaImg from "../../assets/Aarya.jpeg";
+import angelImg from "../../assets/Angel_Mendpara.jpg";
+import ayaanImg from "../../assets/Ayaan_Shaikh.jpg";
+import darshansinhImg from "../../assets/Darshansinh_Vasadiya.jpeg";
+import mannImg from "../../assets/Mann_photo.jpg";
+import princeImg from "../../assets/Prince_Rabari.jpg";
+import rajImg from "../../assets/RAJ_SHAH.jpg";
+import veerImg from "../../assets/veer_patel.jpeg";
+import zishanImg from "../../assets/Zishan_Photo.jpg";
+import freyaImg from "../../assets/Freya_photo.jpg";
+
+const acmFaculty = [
+  { name: "Dr. Shrina Patel", role: "ACM Sponsor", dept: "Computer Science", image: shrinaPatelImg },
+];
 
 const faculty = [
-  { name: "Dr. Rajesh Patel", role: "Faculty Advisor", dept: "Computer Science" },
+  { name: "Dr. DP Soni", role: "Faculty Advisor", dept: "Computer Science", image: principalImg },
+  { name: "Prof. Jayna Shah", role: "Faculty Advisor", dept: "Computer Science", image: jaynaShahImg },
 ];
 
 const coreTeam = [
-  { name: "Arjun Mehta", role: "Chairperson", color: "from-blue-500 to-cyan-400" },
-  { name: "Priya Sharma", role: "Vice Chairperson", color: "from-purple-500 to-pink-500" },
-  { name: "Rohan Desai", role: "Secretary", color: "from-emerald-500 to-teal-400" },
-  { name: "Ananya Joshi", role: "Treasurer", color: "from-orange-500 to-yellow-400" },
+  { name: "Suhani Patel", role: "Chair Person", color: "from-blue-500 to-cyan-400", image: suhaniImg },
+  { name: "Prisha Desai", role: "Vice Chair", color: "from-purple-500 to-pink-500", image: prishaImg },
+  { name: "Varun Patel", role: "Secretary", color: "from-emerald-500 to-teal-400", image: varunImg },
+  { name: "Veer Patel", role: "Treasurer", color: "from-orange-500 to-yellow-400", image: veerImg },
+  { name: "Dhaval Patel", role: "Webmaster", color: "from-rose-500 to-red-400", image: "" },
+  { name: "Dhruv Prajapati", role: "Technical Head", color: "from-indigo-500 to-blue-400", image: "" },
+  { name: "Aarya Patel", role: "Community Head", color: "from-violet-500 to-purple-400", image: aaryaImg },
+  { name: "Ayaan Shaikh", role: "Industry Engagement Head", color: "from-teal-500 to-emerald-400", image: ayaanImg },
+  { name: "Prince Rabari", role: "Technical Coordinator", color: "from-fuchsia-500 to-pink-400", image: princeImg },
+  { name: "Mann Soni", role: "Social Media Head", color: "from-cyan-500 to-blue-400", image: mannImg },
+  { name: "Freya Shah", role: "Social Media Co-coordinator", color: "from-amber-500 to-orange-400", image: freyaImg },
+  { name: "Raj Shah", role: "Event Head", color: "from-pink-500 to-rose-400", image: rajImg },
+  { name: "Zishan Vhora", role: "Creative Head", color: "from-blue-600 to-indigo-500", image: zishanImg },
+  { name: "Angel Mendpara", role: "Creative Head", color: "from-purple-600 to-violet-500", image: angelImg },
+  { name: "Darshansinh Vasadiya", role: "Event Coordinator", color: "from-emerald-600 to-teal-500", image: darshansinhImg },
+  { name: "Jaimin Prajapati", role: "Documentation Head", color: "from-orange-600 to-yellow-500", image: "" },
+  { name: "Pranav Gohil", role: "Documentation Coordinator", color: "from-red-500 to-rose-400", image: "" },
 ];
 
 const leads = [
@@ -24,11 +58,11 @@ const leads = [
 ];
 
 const members = [
-  { name: "Dhruv Shah", role: "Member" },
-  { name: "Riya Agarwal", role: "Member" },
-  { name: "Aditya Kumar", role: "Member" },
-  { name: "Sneha Verma", role: "Member" },
-  { name: "Harsh Trivedi", role: "Member" },
+  { name: "Suhani Patel", role: "Chair Person" },
+  { name: "Prisha Desai", role: "Vice Chair" },
+  { name: "Varun Patel", role: "Secretary" },
+  { name: "Dhaval Patel", role: "Webmaster" },
+  { name: "Veer Patel", role: "Treasurer" },
   { name: "Kavya Desai", role: "Member" },
   { name: "Nikhil Rana", role: "Member" },
   { name: "Pooja Nair", role: "Member" },
@@ -62,20 +96,68 @@ export default function Team() {
         <div className="max-w-4xl mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">Mentors</span>
-            <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl text-white">Faculty Advisors</h2>
+            <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl text-white">ACM Faculty</h2>
           </motion.div>
-          <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
-            {faculty.map((f, i) => (
+
+          {/* ACM Faculty Sponsor */}
+          <div className="grid grid-cols-1 gap-5 max-w-[460px] mx-auto mb-12">
+            {acmFaculty.map((f, i) => (
               <TiltCard key={f.name}>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-6 text-center hover:border-white/[0.15] transition-all"
+                  className="bg-[#1b233d] rounded-[20px] w-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#0066FF] to-[#00D4FF] flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#0066FF]/20">
-                    <span className="text-white" style={{ fontSize: 20, fontWeight: 700, fontFamily: "'Orbitron', sans-serif" }}>{getInitials(f.name)}</span>
+                  <div className="relative h-[520px] w-full overflow-hidden bg-gray-200">
+                    {f.image ? (
+                      <img src={f.image} alt={f.name} className="w-full h-full object-cover object-top" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300">
+                        <span className="text-gray-400 text-6xl font-black" style={{ fontFamily: "'Orbitron', sans-serif" }}>{getInitials(f.name)}</span>
+                      </div>
+                    )}
                   </div>
-                  <h3 style={{ fontSize: 17, fontWeight: 700 }} className="text-white">{f.name}</h3>
-                  <p style={{ fontSize: 13, fontWeight: 600 }} className="text-[#00D4FF] mt-1">{f.role}</p>
-                  <p style={{ fontSize: 12 }} className="text-white/25 mt-1">{f.dept}</p>
+                  <div className="p-6 bg-[#1b233d] flex items-center justify-between gap-4">
+                    <h3 className="text-[24px] font-bold text-white leading-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                      {f.name}
+                    </h3>
+                    <div className="flex gap-2 shrink-0">
+                      <a href="#" className="w-9 h-9 rounded-xl bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={16} /></a>
+                      <a href="#" className="w-9 h-9 rounded-xl bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Mail size={16} /></a>
+                    </div>
+                  </div>
+                </motion.div>
+              </TiltCard>
+            ))}
+          </div>
+
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 mt-20">
+            <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl text-white">Faculty Advisors</h2>
+          </motion.div>
+
+          {/* Faculty Advisors */}
+          <div className="grid sm:grid-cols-2 gap-16 max-w-[1024px] mx-auto">
+            {faculty.map((f, i) => (
+              <TiltCard key={f.name}>
+                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i + 1) * 0.1 }}
+                  className="bg-[#1b233d] rounded-[20px] w-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                >
+                  <div className="relative h-[520px] w-full overflow-hidden bg-gray-200">
+                    {f.image ? (
+                      <img src={f.image} alt={f.name} className="w-full h-full object-cover object-top" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300">
+                        <span className="text-gray-400 text-6xl font-black" style={{ fontFamily: "'Orbitron', sans-serif" }}>{getInitials(f.name)}</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-6 bg-[#1b233d] flex items-center justify-between gap-3">
+                    <h3 className="text-[24px] font-bold text-white leading-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                      {f.name}
+                    </h3>
+                    <div className="flex gap-2 shrink-0">
+                      <a href="#" className="w-8 h-8 rounded-xl bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={15} /></a>
+                      <a href="#" className="w-8 h-8 rounded-xl bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Mail size={15} /></a>
+                    </div>
+                  </div>
                 </motion.div>
               </TiltCard>
             ))}
@@ -86,7 +168,7 @@ export default function Team() {
       {/* Core Team */}
       <section className="py-20 relative">
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#0066FF]/5 rounded-full blur-[150px]" />
-        <div className="relative max-w-7xl mx-auto px-4">
+        <div className="relative max-w-[1440px] mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">Leadership</span>
             <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl text-white">
@@ -94,32 +176,34 @@ export default function Team() {
             </h2>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {coreTeam.map((m, i) => (
               <TiltCard key={m.name}>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl overflow-hidden hover:border-white/[0.15] transition-all group"
+                  className="bg-[#1b233d] rounded-[20px] w-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
                 >
-                  {/* Top gradient */}
-                  <div className={`h-24 bg-gradient-to-br ${m.color} opacity-20 group-hover:opacity-30 transition-opacity relative`}>
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050510]" />
+                  <div className={`relative h-[520px] w-full overflow-hidden bg-gradient-to-br ${m.color}`}>
+                    {m.image ? (
+                      <img src={m.image} alt={m.name} className="w-full h-full object-cover object-top" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <span className="text-white text-6xl font-black" style={{ fontFamily: "'Orbitron', sans-serif" }}>{getInitials(m.name)}</span>
+                      </div>
+                    )}
                   </div>
-
-                  <div className="-mt-10 pb-6 px-5 text-center relative">
-                    <div className="w-20 h-20 rounded-full border-4 border-[#050510] mx-auto shadow-xl">
-                      <div className={`w-full h-full rounded-full bg-gradient-to-br ${m.color} flex items-center justify-center`}>
-                        <span className="text-white" style={{ fontSize: 18, fontWeight: 700, fontFamily: "'Orbitron', sans-serif" }}>{getInitials(m.name)}</span>
+                  <div className="p-5 bg-[#1b233d] flex items-center justify-between gap-2">
+                    <div className="text-left flex-1 min-w-0">
+                      <h3 className="text-[22px] font-bold text-white mb-2 whitespace-nowrap overflow-hidden text-ellipsis" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                        {m.name}
+                      </h3>
+                      <div className="inline-block bg-[#0f172a] border border-white/10 text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {m.role}
                       </div>
                     </div>
-                    <h3 style={{ fontSize: 16, fontWeight: 700 }} className="text-white mt-4">{m.name}</h3>
-                    <p style={{ fontSize: 13, fontWeight: 600 }} className="text-[#00D4FF] mt-1">{m.role}</p>
-
-                    <div className="flex justify-center gap-2 mt-4">
-                      {[Linkedin, Github, Mail].map((Icon, j) => (
-                        <a key={j} href="#" className="w-8 h-8 rounded-lg bg-white/5 border border-white/5 hover:border-[#0066FF]/50 hover:bg-[#0066FF]/10 text-white/30 hover:text-[#00D4FF] flex items-center justify-center transition-all">
-                          <Icon size={14} />
-                        </a>
-                      ))}
+                    <div className="flex gap-1.5 shrink-0">
+                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={13} /></a>
+                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Github size={13} /></a>
+                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Mail size={13} /></a>
                     </div>
                   </div>
                 </motion.div>
@@ -129,61 +213,6 @@ export default function Team() {
         </div>
       </section>
 
-      {/* Domain Leads */}
-      <section className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">Specialists</span>
-            <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl text-white">
-              Domain <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] to-[#00D4FF]">Leads</span>
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            {leads.map((m, i) => (
-              <TiltCard key={m.name}>
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                  className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-5 text-center hover:border-white/[0.15] transition-all group"
-                >
-                  <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${m.color} flex items-center justify-center mx-auto mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <span className="text-white" style={{ fontSize: 16, fontWeight: 700, fontFamily: "'Orbitron', sans-serif" }}>{getInitials(m.name)}</span>
-                  </div>
-                  <h3 style={{ fontSize: 14, fontWeight: 700 }} className="text-white">{m.name}</h3>
-                  <p style={{ fontSize: 11, fontWeight: 500 }} className="text-white/25 mt-0.5">{m.role}</p>
-                </motion.div>
-              </TiltCard>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Members */}
-      <section className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">Members</span>
-            <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl text-white">
-              Team <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] to-[#00D4FF]">Members</span>
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            {members.map((m, i) => (
-              <TiltCard key={m.name}>
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                  className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-5 text-center hover:border-white/[0.15] transition-all group"
-                >
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-slate-500 to-slate-600 flex items-center justify-center mx-auto mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-white" style={{ fontSize: 16, fontWeight: 700, fontFamily: "'Orbitron', sans-serif" }}>{getInitials(m.name)}</span>
-                  </div>
-                  <h3 style={{ fontSize: 14, fontWeight: 700 }} className="text-white">{m.name}</h3>
-                  <p style={{ fontSize: 11, fontWeight: 500 }} className="text-white/25 mt-0.5">{m.role}</p>
-                </motion.div>
-              </TiltCard>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
