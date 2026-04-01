@@ -101,13 +101,13 @@ export default function Team() {
           </motion.div>
 
           {/* ACM Faculty Sponsor */}
-          <div className="grid grid-cols-1 gap-5 max-w-[460px] mx-auto mb-12">
+          <div className="grid grid-cols-1 gap-6 max-w-[360px] mx-auto mb-12">
             {acmFaculty.map((f, i) => (
               <TiltCard key={f.name}>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                   className="bg-[#1b233d] rounded-[20px] w-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="relative h-[520px] w-full overflow-hidden bg-gray-200">
+                  <div className="relative h-[380px] w-full overflow-hidden bg-gray-200">
                     {f.image ? (
                       <img src={f.image} alt={f.name} className="w-full h-full object-cover object-top" />
                     ) : (
@@ -116,13 +116,18 @@ export default function Team() {
                       </div>
                     )}
                   </div>
-                  <div className="p-6 bg-[#1b233d] flex items-center justify-between gap-4">
-                    <h3 className="text-[24px] font-bold text-white leading-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
-                      {f.name}
-                    </h3>
-                    <div className="flex gap-2 shrink-0">
-                      <a href="#" className="w-9 h-9 rounded-xl bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={16} /></a>
-                      <a href="#" className="w-9 h-9 rounded-xl bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Mail size={16} /></a>
+                  <div className="p-5 bg-[#1b233d] flex items-center justify-between gap-2">
+                    <div className="text-left flex-1 min-w-0">
+                      <h3 className="text-[22px] font-bold text-white mb-2 whitespace-nowrap overflow-hidden text-ellipsis" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                        {f.name}
+                      </h3>
+                      <div className="inline-block bg-[#0f172a] border border-white/10 text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {f.role}
+                      </div>
+                    </div>
+                    <div className="flex gap-1.5 shrink-0">
+                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={13} /></a>
+                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Mail size={13} /></a>
                     </div>
                   </div>
                 </motion.div>
@@ -135,13 +140,13 @@ export default function Team() {
           </motion.div>
 
           {/* Faculty Advisors */}
-          <div className="grid sm:grid-cols-2 gap-16 max-w-[1024px] mx-auto">
+          <div className="grid sm:grid-cols-2 gap-8 max-w-[760px] mx-auto">
             {faculty.map((f, i) => (
               <TiltCard key={f.name}>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i + 1) * 0.1 }}
                   className="bg-[#1b233d] rounded-[20px] w-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="relative h-[520px] w-full overflow-hidden bg-gray-200">
+                  <div className="relative h-[380px] w-full overflow-hidden bg-gray-200">
                     {f.image ? (
                       <img src={f.image} alt={f.name} className="w-full h-full object-cover object-top" />
                     ) : (
@@ -150,13 +155,18 @@ export default function Team() {
                       </div>
                     )}
                   </div>
-                  <div className="p-6 bg-[#1b233d] flex items-center justify-between gap-3">
-                    <h3 className="text-[24px] font-bold text-white leading-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
-                      {f.name}
-                    </h3>
-                    <div className="flex gap-2 shrink-0">
-                      <a href="#" className="w-8 h-8 rounded-xl bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={15} /></a>
-                      <a href="#" className="w-8 h-8 rounded-xl bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Mail size={15} /></a>
+                  <div className="p-5 bg-[#1b233d] flex items-center justify-between gap-2">
+                    <div className="text-left flex-1 min-w-0">
+                      <h3 className="text-[22px] font-bold text-white mb-2 whitespace-nowrap overflow-hidden text-ellipsis" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                        {f.name}
+                      </h3>
+                      <div className="inline-block bg-[#0f172a] border border-white/10 text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {f.role}
+                      </div>
+                    </div>
+                    <div className="flex gap-1.5 shrink-0">
+                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={13} /></a>
+                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Mail size={13} /></a>
                     </div>
                   </div>
                 </motion.div>
