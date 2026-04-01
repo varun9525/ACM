@@ -177,11 +177,11 @@ export default function Team() {
             </h2>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {coreTeam.map((m, i) => (
-              <TiltCard key={m.name}>
+              <TiltCard key={m.name} className="h-full">
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="bg-[#1b233d] rounded-[20px] w-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                  className="bg-[#1b233d] rounded-[20px] w-full h-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col"
                 >
                   <div className={`relative h-[380px] w-full overflow-hidden bg-gradient-to-br ${m.color}`}>
                     {m.image ? (
@@ -192,7 +192,7 @@ export default function Team() {
                       </div>
                     )}
                   </div>
-                  <div className="p-5 bg-[#1b233d] flex items-center justify-between gap-2">
+                  <div className="p-5 bg-[#1b233d] flex flex-1 items-center justify-between gap-2">
                     <div className="text-left flex-1 min-w-0">
                       <h3 className="text-[22px] font-bold text-white mb-2 whitespace-nowrap overflow-hidden text-ellipsis" style={{ fontFamily: "'Orbitron', sans-serif" }}>
                         {m.name}
@@ -201,7 +201,7 @@ export default function Team() {
                         {m.role}
                       </div>
                     </div>
-                    <div className="flex gap-1.5 shrink-0">
+                    <div className="flex gap-1.5 shrink-0 ml-4">
                       <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={13} /></a>
                       <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Github size={13} /></a>
                       <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Mail size={13} /></a>
