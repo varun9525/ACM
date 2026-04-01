@@ -44,7 +44,6 @@ export default function Contact() {
 
             {[
               { icon: Mail, label: "Email", value: "acm@svitvasad.ac.in" },
-              { icon: Phone, label: "Phone", value: "+91 98765 43210" },
               { icon: MapPin, label: "Address", value: "SVIT Campus, Vasad, Gujarat 388306" },
             ].map((c, i) => (
               <TiltCard key={c.label}>

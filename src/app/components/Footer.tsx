@@ -41,7 +41,7 @@ export default function Footer() {
           <div>
             <h4 style={{ fontSize: 12, fontWeight: 600, letterSpacing: 2 }} className="text-white/50 uppercase mb-4">Resources</h4>
             {["ACM Digital Library", "Membership", "Code of Ethics", "Research"].map((l) => (
-              <a key={l} href="#" className="group group/btn flex items-center gap-1 py-1.5 text-white/30 hover:text-[#00D4FF] transition-colors" style={{ fontSize: 13 }}>
+              <a key={l} href="https://india.acm.org/" className="group group/btn flex items-center gap-1 py-1.5 text-white/30 hover:text-[#00D4FF] transition-colors" style={{ fontSize: 13 }}>
                 <RollingText text={l} activeColor="text-[#00D4FF]" /> <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
             ))}
