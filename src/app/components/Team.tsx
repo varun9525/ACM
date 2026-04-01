@@ -25,12 +25,12 @@ import jaiminImg from "../../assets/Jaimin_Photo.jpg";
 import dhruvImg from "../../assets/Dhruv_photo.jpeg";
 
 const acmFaculty = [
-  { name: "Dr. Shrina Patel", role: "ACM Sponsor", dept: "Computer Science", image: shrinaPatelImg },
+  { name: "Dr. Shrina Patel", role: "ACM Faculty Coordinator", dept: "Computer Engineering", image: shrinaPatelImg },
 ];
 
 const faculty = [
-  { name: "Dr. DP Soni", role: "Faculty Advisor", dept: "Computer Science", image: principalImg },
-  { name: "Prof. Jayna Shah", role: "Faculty Advisor", dept: "Computer Science", image: jaynaShahImg },
+  { name: "Dr. DP Soni", role: "Principal SVIT Vasad", dept: "Computer Engineering", image: principalImg },
+  { name: "Prof. Jayna Shah", role: "I/C HOD Computer Engineering", dept: "Computer Engineering", image: jaynaShahImg },
 ];
 
 const coreTeam = [
