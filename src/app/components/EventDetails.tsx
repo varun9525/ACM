@@ -5,7 +5,6 @@ import { Link } from "react-router";
 import GlowText from "./GlowText";
 import ParticleField from "./ParticleField";
 import TiltCard from "./TiltCard";
-import RollingText from "./RollingText";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import svitCampus from "../../assets/38cc7112b553bd6144b9a84e15b6b77217b38a0c.png";
 
@@ -130,15 +129,6 @@ export default function EventDetails() {
               <p>The inauguration marks the beginning of our journey as an official ACM Student Chapter. We are thrilled to invite all tech enthusiasts, students, and faculty members to join us for this historic moment.</p>
               <p>During the ceremony, we will unveil our vision for the upcoming academic year, introduce the core committee members, and outline the various domains of focus ranging from Machine Learning to Competitive Programming.</p>
               <p>Don't miss the opportunity to network with industry professionals and faculty advisors who are paving the way for the next generation of computing excellence.</p>
-            </div>
-            
-            <div className="mt-10">
-               <button className="group group/btn relative inline-flex items-center gap-2 px-10 py-5 rounded-xl overflow-hidden shadow-[0_0_40px_-10px_rgba(0,102,255,0.4)]" style={{ fontSize: 15, fontWeight: 700 }}>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF]" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] blur-xl opacity-60 group-hover:opacity-100 transition-opacity" />
-                <span className="relative flex items-center pr-2"><RollingText text="Reserve Your Seat" activeColor="text-white" /></span>
-                <Sparkles size={18} className="relative group-hover:scale-110 transition-transform" />
-              </button>
             </div>
           </div>
 
