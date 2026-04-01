@@ -22,6 +22,7 @@ import zishanImg from "../../assets/Zishan_Photo.jpg";
 import freyaImg from "../../assets/Freya_photo.jpg";
 import dhavalImg from "../../assets/DhavalPatel.jpeg";
 import jaiminImg from "../../assets/Jaimin_Photo.jpg";
+import dhruvImg from "../../assets/Dhruv_photo.jpeg";
 
 const acmFaculty = [
   { name: "Dr. Shrina Patel", role: "ACM Sponsor", dept: "Computer Science", image: shrinaPatelImg },
@@ -38,7 +39,7 @@ const coreTeam = [
   { name: "Varun Patel", role: "Secretary", color: "from-emerald-500 to-teal-400", image: varunImg },
   { name: "Veer Patel", role: "Treasurer", color: "from-orange-500 to-yellow-400", image: veerImg },
   { name: "Dhaval Patel", role: "Webmaster", color: "from-rose-500 to-red-400", image: dhavalImg },
-  { name: "Dhruv Prajapati", role: "Technical Head", color: "from-indigo-500 to-blue-400", image: "" },
+  { name: "Dhruv Prajapati", role: "Technical Head", color: "from-indigo-500 to-blue-400", image: dhruvImg },
   { name: "Aarya Patel", role: "Community Head", color: "from-violet-500 to-purple-400", image: aaryaImg },
   { name: "Ayaan Shaikh", role: "Industry Engagement Head", color: "from-teal-500 to-emerald-400", image: ayaanImg },
   { name: "Prince Rabari", role: "Technical Coordinator", color: "from-fuchsia-500 to-pink-400", image: princeImg },
@@ -117,18 +118,19 @@ export default function Team() {
                       </div>
                     )}
                   </div>
-                  <div className="p-5 bg-[#1b233d] flex items-center justify-between gap-2">
-                    <div className="text-left flex-1 min-w-0">
-                      <h3 className="text-[22px] font-bold text-white mb-2 whitespace-nowrap overflow-hidden text-ellipsis" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                  <div className="p-6 bg-[#1b233d]">
+                    <div className="mb-3">
+                      <h3 className="text-[24px] font-bold text-white leading-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
                         {f.name}
                       </h3>
+                    </div>
+                    <div className="flex items-center justify-between gap-4">
                       <div className="inline-block bg-[#0f172a] border border-white/10 text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                         {f.role}
                       </div>
-                    </div>
-                    <div className="flex gap-1.5 shrink-0">
-                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={13} /></a>
-                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Mail size={13} /></a>
+                      <div className="flex gap-2">
+                        <a href="#" className="w-8 h-8 rounded-xl bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={15} /></a>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -156,18 +158,19 @@ export default function Team() {
                       </div>
                     )}
                   </div>
-                  <div className="p-5 bg-[#1b233d] flex items-center justify-between gap-2">
-                    <div className="text-left flex-1 min-w-0">
-                      <h3 className="text-[22px] font-bold text-white mb-2 whitespace-nowrap overflow-hidden text-ellipsis" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                  <div className="p-6 bg-[#1b233d]">
+                    <div className="mb-3">
+                      <h3 className="text-[24px] font-bold text-white leading-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
                         {f.name}
                       </h3>
+                    </div>
+                    <div className="flex items-center justify-between gap-4">
                       <div className="inline-block bg-[#0f172a] border border-white/10 text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                         {f.role}
                       </div>
-                    </div>
-                    <div className="flex gap-1.5 shrink-0">
-                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={13} /></a>
-                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Mail size={13} /></a>
+                      <div className="flex gap-2">
+                        <a href="#" className="w-8 h-8 rounded-xl bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={15} /></a>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -203,19 +206,20 @@ export default function Team() {
                       </div>
                     )}
                   </div>
-                  <div className="p-5 bg-[#1b233d] flex flex-1 items-center justify-between gap-2">
-                    <div className="text-left flex-1 min-w-0">
-                      <h3 className="text-[22px] font-bold text-white mb-2 whitespace-nowrap overflow-hidden text-ellipsis" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                  <div className="p-5 bg-[#1b233d] flex flex-1 flex-col justify-between">
+                    <div className="text-left w-full mb-3">
+                      <h3 className="text-[22px] font-bold text-white leading-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
                         {m.name}
                       </h3>
+                    </div>
+                    <div className="flex items-center justify-between gap-2 mt-auto">
                       <div className="inline-block bg-[#0f172a] border border-white/10 text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                         {m.role}
                       </div>
-                    </div>
-                    <div className="flex gap-1.5 shrink-0 ml-4">
-                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={13} /></a>
-                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Github size={13} /></a>
-                      <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Mail size={13} /></a>
+                      <div className="flex gap-1.5">
+                        <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Linkedin size={13} /></a>
+                        <a href="#" className="w-7 h-7 rounded-lg bg-white shadow-md flex items-center justify-center text-[#0a1128] hover:bg-gray-100 hover:scale-110 transition-all"><Github size={13} /></a>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
