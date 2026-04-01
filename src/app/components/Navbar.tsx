@@ -42,6 +42,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group min-w-0">
           <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] rounded-lg blur opacity-40 group-hover:opacity-70 transition-opacity" />
             <img src={acmLogo} alt="ACM Logo" className="relative w-14 h-14 object-contain" />
           </div>
           <div className="flex flex-col leading-tight min-w-0">
