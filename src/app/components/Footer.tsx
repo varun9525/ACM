@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Github, Linkedin, Instagram, Mail, MapPin, ArrowUpRight } from "lucide-react";
-import acmLogo from "../../assets/d16feed6d1c3e6975f13d701bab37fa53bf54d76.png";
+import acmLogo from "../../../acm_chapter_sym.svg";
 import RollingText from "./RollingText";
 
 export default function Footer() {
@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <img src={acmLogo} alt="ACM Logo" className="w-9 h-9 object-contain" style={{ filter: 'invert(1) hue-rotate(180deg)', mixBlendMode: 'screen' }} />
+              <img src={acmLogo} alt="ACM Logo" className="w-12 h-12 object-contain" />
               <div className="flex flex-col leading-tight">
                 <span style={{ fontSize: 15, fontWeight: 700 }} className="text-white">SVIT ACM</span>
                 <span style={{ fontSize: 8, fontWeight: 500, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/50">STUDENT CHAPTER</span>

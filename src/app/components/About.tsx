@@ -4,7 +4,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import TiltCard from "./TiltCard";
 import GlowText from "./GlowText";
 import ParticleField from "./ParticleField";
-import acmTextLogo from "../../assets/757ae12a6ac34d5e0f9d1d6febf918ba3d0766c4.png";
+import acmTextLogo from "../../../acm_4c_grad_vtag_b_pos_white_text.svg";
 import svitCampus from "../../assets/38cc7112b553bd6144b9a84e15b6b77217b38a0c.png";
 
 const values = [
@@ -46,7 +46,7 @@ export default function About() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
           <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">About ACM</span>
-            <img src={acmTextLogo} alt="ACM - Association for Computing Machinery" className="mb-6 h-14 object-contain" style={{ filter: 'invert(1) hue-rotate(180deg)', mixBlendMode: 'screen' }} />
+            <img src={acmTextLogo} alt="ACM - Association for Computing Machinery" className="mb-6 h-20 object-contain" />
             <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl sm:text-4xl text-white mb-6">
               What is <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] to-[#00D4FF]">ACM?</span>
             </h2>

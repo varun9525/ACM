@@ -11,6 +11,10 @@ import RevealHeading from "./RevealHeading";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import svitCampus from "../../assets/38cc7112b553bd6144b9a84e15b6b77217b38a0c.png";
 import svitPhoto from "../../../SVIT.jpeg";
+import eventPhoto1 from "../../assets/event_photo_1.jpg.jpeg";
+import eventPhoto2 from "../../assets/event_photo_2.jpg.jpeg";
+import eventPhoto3 from "../../assets/event_photo_3.jpg.jpeg";
+import eventPhoto4 from "../../assets/event_photo_4.jpg.jpeg";
 
 const stats = [
   { icon: Users, value: 17, suffix: "", label: "Members" },
@@ -21,13 +25,11 @@ const upcomingEvents = [
   { date: "APR 02", title: "Inauguration Ceremony", desc: "Grand inauguration of SVIT ACM Student Chapter", tag: "Inauguration", color: "from-blue-500 to-cyan-400" },
 ];
 
-const eventGalleryPlaceholders = [
-  "Event Photo 01",
-  "Event Photo 02",
-  "Event Photo 03",
-  "Event Photo 04",
-  "Event Photo 05",
-  "Event Photo 06",
+const eventGalleryImages = [
+  { src: eventPhoto1, alt: "SVIT Event Photo 1" },
+  { src: eventPhoto2, alt: "SVIT Event Photo 2" },
+  { src: eventPhoto3, alt: "SVIT Event Photo 3" },
+  { src: eventPhoto4, alt: "SVIT Event Photo 4" },
 ];
 
 const whatsappCommunityUrl = "https://chat.whatsapp.com/DApcf2RsuyB1kIFlhHrmA9";
@@ -79,14 +81,11 @@ export default function Home() {
             transition={{ delay: 1.2 }}
             className="flex flex-wrap justify-center gap-4"
           >
-            <Link to="/contact" className="group group/btn relative inline-flex items-center gap-2 px-8 py-4 rounded-xl overflow-hidden" style={{ fontSize: 15, fontWeight: 600 }}>
+            <Link to="/events" className="group group/btn relative inline-flex items-center gap-2 px-8 py-4 rounded-xl overflow-hidden" style={{ fontSize: 15, fontWeight: 600 }}>
               <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF]" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] blur-xl opacity-50 group-hover:opacity-80 transition-opacity" />
-              <span className="relative flex items-center"><RollingText text="Join the Chapter" /></span>
+              <span className="relative flex items-center"><RollingText text="Explore Events" activeColor="text-white" /></span>
               <ArrowRight size={18} className="relative group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link to="/events" className="group/btn inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/10 text-white/70 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all backdrop-blur-sm" style={{ fontSize: 15, fontWeight: 600 }}>
-              <RollingText text="Explore Events" activeColor="text-white" />
             </Link>
           </motion.div>
 
@@ -209,13 +208,9 @@ export default function Home() {
       {/* ===== GALLERY STRIP ===== */}
       <section className="py-16 relative overflow-hidden">
         <div className="flex gap-4 animate-scroll">
-          {eventGalleryPlaceholders.flatMap((label) => [label, label]).map((label, i) => (
-            <div key={i} className="shrink-0 w-72 h-44 rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-sm opacity-70 hover:opacity-100 transition-opacity">
-              <div className="w-full h-full flex flex-col items-center justify-center text-center px-4 bg-gradient-to-br from-[#0066FF]/10 via-transparent to-[#00D4FF]/10">
-                <Calendar size={24} className="text-[#00D4FF] mb-3" />
-                <p className="text-white/85" style={{ fontSize: 14, fontWeight: 600 }}>{label}</p>
-                <p className="text-white/35 mt-1" style={{ fontSize: 12 }}>Coming Soon</p>
-              </div>
+          {[...eventGalleryImages, ...eventGalleryImages].map((img, i) => (
+            <div key={i} className="shrink-0 w-72 h-44 rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-sm opacity-80 hover:opacity-100 transition-opacity">
+              <ImageWithFallback src={img.src} alt={img.alt} className="w-full h-full object-cover" />
             </div>
           ))}
         </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
-import newAcmLogo from "../../assets/67de38ad-7725-4bb3-9c2e-c2bee51045d4-1.png";
+import newAcmLogo from "../../../acm_chapter_sym.svg";
 
 export default function SiteLoader({ isInitial, onComplete, onReveal }: { isInitial: boolean; onComplete: () => void; onReveal?: () => void }) {
   const [progress, setProgress] = useState(0);
@@ -151,7 +151,7 @@ export default function SiteLoader({ isInitial, onComplete, onReveal }: { isInit
               <img
                 src={newAcmLogo}
                 alt="ACM"
-                className="absolute w-[60px] h-[60px] object-contain"
+                className="absolute w-[72px] h-[72px] object-contain"
                 style={{
                   filter: "drop-shadow(0 0 30px #00D4FF) drop-shadow(0 0 60px #0066FF)",
                 }}

@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router";
 import RollingText from "./RollingText";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import acmLogo from "../../assets/d16feed6d1c3e6975f13d701bab37fa53bf54d76.png";
+import acmLogo from "../../../acm_chapter_sym.svg";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -42,8 +42,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group min-w-0">
           <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] rounded-lg blur opacity-40 group-hover:opacity-70 transition-opacity" />
-            <img src={acmLogo} alt="ACM Logo" className="relative w-10 h-10 object-contain" style={{ filter: 'invert(1) hue-rotate(180deg)', mixBlendMode: 'screen' }} />
+            <img src={acmLogo} alt="ACM Logo" className="relative w-14 h-14 object-contain" />
           </div>
           <div className="flex flex-col leading-tight min-w-0">
             <span style={{ fontSize: 15, fontWeight: 700, fontFamily: "'Space Grotesk', sans-serif" }} className="text-white truncate">SVIT ACM</span>
@@ -77,21 +76,6 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-
-        {/* CTA */}
-        <a
-          href="https://chat.whatsapp.com/DApcf2RsuyB1kIFlhHrmA9"
-          target="_blank"
-          rel="noreferrer"
-          className="hidden md:inline-flex relative group group/btn px-6 py-2.5 rounded-lg overflow-hidden"
-          style={{ fontSize: 13, fontWeight: 600, fontFamily: "'Space Grotesk', sans-serif" }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] transition-all group-hover:opacity-90" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] blur-lg opacity-40 group-hover:opacity-60 transition-opacity" />
-          <span className="relative text-white flex items-center justify-center">
-             <RollingText text="Join Us" activeColor="text-white" />
-          </span>
-        </a>
 
         {/* Mobile */}
         <button
@@ -132,9 +116,6 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
-              <a href="https://chat.whatsapp.com/DApcf2RsuyB1kIFlhHrmA9" target="_blank" rel="noreferrer" onClick={() => setOpen(false)} className="block mt-3 text-center px-5 py-3 bg-gradient-to-r from-[#0066FF] to-[#00D4FF] text-white rounded-lg" style={{ fontSize: 14, fontWeight: 600 }}>
-                Join Us
-              </a>
             </div>
           </motion.div>
         )}
