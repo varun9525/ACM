@@ -169,21 +169,21 @@ export default function Team() {
       {/* Core Team */}
       <section className="py-20 relative">
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#0066FF]/5 rounded-full blur-[150px]" />
-        <div className="relative max-w-6xl mx-auto px-4">
+        <div className="relative max-w-5xl mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">Leadership</span>
+            
             <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl text-white">
-              Core Team <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] to-[#00D4FF]">2025-26</span>
+              Core Team <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] to-[#00D4FF]">2026-27</span>
             </h2>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {coreTeam.map((m, i) => (
               <TiltCard key={m.name}>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                   className="bg-[#1b233d] rounded-[20px] w-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className={`relative h-[440px] w-full overflow-hidden bg-gradient-to-br ${m.color}`}>
+                  <div className={`relative h-[380px] w-full overflow-hidden bg-gradient-to-br ${m.color}`}>
                     {m.image ? (
                       <img src={m.image} alt={m.name} className="w-full h-full object-cover object-top" />
                     ) : (
