@@ -20,6 +20,7 @@ import rajImg from "../../assets/RAJ_SHAH.jpg";
 import veerImg from "../../assets/veer_patel.jpeg";
 import zishanImg from "../../assets/Zishan_Photo.jpg";
 import freyaImg from "../../assets/Freya_photo.jpg";
+import dhavalImg from "../../assets/DhavalPatel.jpeg";
 
 const acmFaculty = [
   { name: "Dr. Shrina Patel", role: "ACM Sponsor", dept: "Computer Science", image: shrinaPatelImg },
@@ -35,7 +36,7 @@ const coreTeam = [
   { name: "Prisha Desai", role: "Vice Chair", color: "from-purple-500 to-pink-500", image: prishaImg },
   { name: "Varun Patel", role: "Secretary", color: "from-emerald-500 to-teal-400", image: varunImg },
   { name: "Veer Patel", role: "Treasurer", color: "from-orange-500 to-yellow-400", image: veerImg },
-  { name: "Dhaval Patel", role: "Webmaster", color: "from-rose-500 to-red-400", image: "" },
+  { name: "Dhaval Patel", role: "Webmaster", color: "from-rose-500 to-red-400", image: dhavalImg },
   { name: "Dhruv Prajapati", role: "Technical Head", color: "from-indigo-500 to-blue-400", image: "" },
   { name: "Aarya Patel", role: "Community Head", color: "from-violet-500 to-purple-400", image: aaryaImg },
   { name: "Ayaan Shaikh", role: "Industry Engagement Head", color: "from-teal-500 to-emerald-400", image: ayaanImg },
