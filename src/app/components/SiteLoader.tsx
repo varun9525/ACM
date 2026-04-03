@@ -49,21 +49,27 @@ export default function SiteLoader({ isInitial, onComplete, onReveal }: { isInit
       advanceTo(25);
     }
 
-    // Images → 25–80%
+    // Images → 25–80% (prioritize critical images or time out early)
     const scoreImages = () => {
-      const imgs = Array.from(document.images);
-      if (!imgs.length) { advanceTo(75); return; }
+      const imgs = Array.from(document.images).filter(img => !img.loading || img.loading !== "lazy");
+      if (!imgs.length) { advanceTo(80); return; }
       let done = 0;
-      const tick = () => { done++; advanceTo(25 + (done / imgs.length) * 55); };
+      const tick = () => { 
+        done++; 
+        advanceTo(25 + (done / imgs.length) * 55); 
+        if (done >= imgs.length) advanceTo(80);
+      };
       imgs.forEach((img) => {
         if (img.complete) tick();
         else {
           img.addEventListener("load",  tick, { once: true });
           img.addEventListener("error", tick, { once: true });
+          // Timeout for individual images on slow mobile networks
+          setTimeout(() => { if (!img.complete) tick(); }, 3000);
         }
       });
     };
-    const imgTimer = setTimeout(scoreImages, 80);
+    const imgTimer = setTimeout(scoreImages, 50);
 
     // Fonts ready → 90%
     document.fonts.ready.then(() => { if (!cancelled) advanceTo(90); });
@@ -73,7 +79,7 @@ export default function SiteLoader({ isInitial, onComplete, onReveal }: { isInit
       windowLoaded = true;
       if (cancelled) return;
       advanceTo(100);
-      setTimeout(() => { if (!cancelled) setPhase("zoomingOut"); }, 400);
+      setTimeout(() => { if (!cancelled) setPhase("zoomingOut"); }, 200);
     };
 
     if (document.readyState === "complete") {
@@ -82,13 +88,13 @@ export default function SiteLoader({ isInitial, onComplete, onReveal }: { isInit
       window.addEventListener("load", finish, { once: true });
     }
 
-    // Safety net — never stuck past 8 s
+    // Safety net — shorter for mobile to prevent frustration
     const safety = setTimeout(() => {
       if (!cancelled && !windowLoaded) {
         advanceTo(100);
-        setTimeout(() => { if (!cancelled) setPhase("zoomingOut"); }, 400);
+        setTimeout(() => { if (!cancelled) setPhase("zoomingOut"); }, 200);
       }
-    }, 8000);
+    }, 5000);
 
     return () => {
       cancelled = true;

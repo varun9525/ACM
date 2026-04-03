@@ -1,8 +1,8 @@
 import { Link } from "react-router";
 import { ArrowRight, Users, Calendar } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
-import ParticleField from "./ParticleField";
+import { useRef, lazy, Suspense } from "react";
+const ParticleField = lazy(() => import("./ParticleField"));
 import TiltCard from "./TiltCard";
 import GlowText from "./GlowText";
 import AnimatedCounter from "./AnimatedCounter";
@@ -44,12 +44,9 @@ export default function Home() {
     <div className="bg-[#050510] text-white overflow-hidden" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
       {/* ===== HERO ===== */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <ParticleField />
-
-        {/* Gradient orbs */}
-        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-[#0066FF]/15 rounded-full blur-[150px] animate-pulse" />
-        <div className="absolute bottom-1/4 -right-20 w-[400px] h-[400px] bg-[#00D4FF]/10 rounded-full blur-[120px]" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[150px]" />
+        <Suspense fallback={<div className="absolute inset-0 bg-[#050510]" />}>
+          <ParticleField />
+        </Suspense>
 
         {/* Grid overlay */}
         <div className="absolute inset-0 opacity-[0.03]" style={{
