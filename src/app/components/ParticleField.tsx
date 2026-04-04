@@ -92,16 +92,18 @@ function Particles() {
 
   return (
     <>
-      <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
+      <instancedMesh ref={meshRef} args={[null!, null!, count]}>
         <circleGeometry args={[1, 8]} />
         <meshBasicMaterial color="#0066FF" transparent opacity={0.4} />
       </instancedMesh>
       <lineSegments ref={linesRef}>
         <bufferGeometry>
           <bufferAttribute
-            attach="attributes-position"
-            args={[linePositions, 3]}
-          />
+  attach="attributes-position"
+  count={linePositions.length / 3}
+  array={linePositions}
+  itemSize={3}
+/>
         </bufferGeometry>
         <lineBasicMaterial
           color="#0066FF"
