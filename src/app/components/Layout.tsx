@@ -1,8 +1,9 @@
 import { Outlet, useLocation } from "react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SiteLoader from "./SiteLoader";
+const ParticleField = lazy(() => import("./ParticleField"));
 
 // Module-level flag — persists across route changes, reset on hard refresh only
 let hasLoaded = false;
@@ -20,7 +21,7 @@ export default function Layout() {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050510] overflow-x-hidden w-full">
+    <div className="min-h-screen flex flex-col bg-[#050a1a] overflow-x-hidden w-full">
       {/* Site Loader — only shown on initial page load of the homepage */}
       {!isLoaderDone && (
         <SiteLoader
@@ -41,7 +42,10 @@ export default function Layout() {
         style={{ visibility: isContentVisible ? "visible" : "hidden" }}
       >
         <Navbar />
-        <main className="flex-1">
+        <main className="flex-1 relative">
+          <Suspense fallback={null}>
+            <ParticleField />
+          </Suspense>
           <Outlet />
         </main>
         <Footer />

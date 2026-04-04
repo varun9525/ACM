@@ -1,155 +1,145 @@
-import { useRef, useMemo } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import * as THREE from "three";
+import { useEffect, useRef, useCallback } from "react";
 
-function Particles() {
-  const { viewport, mouse: r3fMouse } = useThree();
-  const meshRef = useRef<THREE.InstancedMesh>(null!);
-  const linesRef = useRef<THREE.LineSegments>(null!);
-  
-  // Count based on screen size for performance
-  const count = useMemo(() => {
-    const baseCount = Math.floor(window.innerWidth / 15);
-    return Math.min(120, Math.max(40, baseCount));
-  }, []);
-  
-  const particles = useMemo(() => {
-    const temp = [];
+interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+  baseVx: number;
+  baseVy: number;
+  opacity: number;
+}
+
+export default function ParticleField() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const particlesRef = useRef<Particle[]>([]);
+  const mouseRef = useRef({ x: -1000, y: -1000 });
+  const animationRef = useRef<number>();
+
+  const initParticles = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const count = Math.min(80, Math.max(40, Math.floor((canvas.width * canvas.height) / 15000)));
+    particlesRef.current = [];
+
     for (let i = 0; i < count; i++) {
-      temp.push({
-        position: new THREE.Vector3(
-          (Math.random() - 0.5) * viewport.width * 1.5,
-          (Math.random() - 0.5) * viewport.height * 1.5,
-          0
-        ),
-        velocity: new THREE.Vector3(
-          (Math.random() - 0.5) * 0.005,
-          (Math.random() - 0.5) * 0.005,
-          0
-        ),
-        size: Math.random() * 0.05 + 0.02,
+      particlesRef.current.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        baseVx: (Math.random() - 0.5) * 0.3,
+        baseVy: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 2.5 + 1,
+        opacity: Math.random() * 0.5 + 0.3,
       });
     }
-    return temp;
-  }, [count, viewport.width, viewport.height]);
+  }, []);
 
-  const linePositions = useMemo(() => new Float32Array(count * 20 * 3), [count]);
-  const dummy = useMemo(() => new THREE.Object3D(), []);
+  const animate = useCallback(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !ctx) return;
 
-  useFrame((state) => {
-    if (!meshRef.current || !linesRef.current) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    let lineIndex = 0;
-    const lineGeometry = linesRef.current.geometry;
-    const mousePos = new THREE.Vector3(
-      (r3fMouse.x * viewport.width) / 2,
-      (r3fMouse.y * viewport.height) / 2,
-      0
-    );
+    const { x: mouseX, y: mouseY } = mouseRef.current;
+    const repelRadius = 120;
+    const repelStrength = 3;
 
-    particles.forEach((p, i) => {
-      p.position.add(p.velocity);
+    particlesRef.current.forEach((p) => {
+      p.vx = p.baseVx;
+      p.vy = p.baseVy;
 
-      // Boundary check with wrap-around
-      if (p.position.x > (viewport.width * 0.8) / 2) p.position.x = -(viewport.width * 0.8) / 2;
-      if (p.position.x < -(viewport.width * 0.8) / 2) p.position.x = (viewport.width * 0.8) / 2;
-      if (p.position.y > (viewport.height * 0.8) / 2) p.position.y = -(viewport.height * 0.8) / 2;
-      if (p.position.y < -(viewport.height * 0.8) / 2) p.position.y = (viewport.height * 0.8) / 2;
+      const dx = p.x - mouseX;
+      const dy = p.y - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
 
-      // Subtle mouse interaction
-      const distToMouse = p.position.distanceTo(mousePos);
-      if (distToMouse < 2) {
-        const repulsion = p.position.clone().sub(mousePos).normalize().multiplyScalar(0.005 * (1 - distToMouse / 2));
-        p.position.add(repulsion);
+      if (dist < repelRadius && dist > 0) {
+        const force = (repelRadius - dist) / repelRadius;
+        const angle = Math.atan2(dy, dx);
+        p.vx += Math.cos(angle) * force * repelStrength;
+        p.vy += Math.sin(angle) * force * repelStrength;
       }
 
-      dummy.position.copy(p.position);
-      dummy.scale.setScalar(p.size);
-      dummy.updateMatrix();
-      meshRef.current.setMatrixAt(i, dummy.matrix);
+      p.x += p.vx;
+      p.y += p.vy;
 
-      // Connect lines (limit distance and number of lines for performance)
-      let connections = 0;
-      for (let j = i + 1; j < particles.length && connections < 5; j++) {
-        const p2 = particles[j];
-        const d = p.position.distanceTo(p2.position);
-        if (d < 1.2) {
-          linePositions[lineIndex++] = p.position.x;
-          linePositions[lineIndex++] = p.position.y;
-          linePositions[lineIndex++] = p.position.z;
-          linePositions[lineIndex++] = p2.position.x;
-          linePositions[lineIndex++] = p2.position.y;
-          linePositions[lineIndex++] = p2.position.z;
-          connections++;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0, 180, 255, ${p.opacity})`;
+      ctx.fill();
+    });
+
+    particlesRef.current.forEach((p1, i) => {
+      for (let j = i + 1; j < particlesRef.current.length; j++) {
+        const p2 = particlesRef.current[j];
+        const dx = p1.x - p2.x;
+        const dy = p1.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 150) {
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(0, 150, 255, ${0.15 * (1 - dist / 150)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
         }
       }
     });
 
-    meshRef.current.instanceMatrix.needsUpdate = true;
-    lineGeometry.attributes.position.needsUpdate = true;
-    lineGeometry.setDrawRange(0, lineIndex / 3);
-  });
+    animationRef.current = requestAnimationFrame(animate);
+  }, []);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initParticles();
+    };
+
+    resize();
+    window.addEventListener("resize", resize);
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY };
+    };
+
+    const handleMouseLeave = () => {
+      mouseRef.current = { x: -1000, y: -1000 };
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseleave", handleMouseLeave);
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [initParticles, animate]);
 
   return (
-    <>
-      <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
-        <circleGeometry args={[1, 8]} />
-        <meshBasicMaterial color="#0066FF" transparent opacity={0.4} />
-      </instancedMesh>
-      <lineSegments ref={linesRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            args={[linePositions, 3]}
-          />
-        </bufferGeometry>
-        <lineBasicMaterial
-          color="#0066FF"
-          transparent
-          opacity={0.08}
-          linewidth={1}
-        />
-      </lineSegments>
-    </>
-  );
-}
-
-function GradientOrbs() {
-  const { viewport } = useThree();
-  const orbs = useMemo(() => [
-    { color: "#0066FF", pos: [-viewport.width / 4, viewport.height / 4, -2], size: 4, opacity: 0.1 },
-    { color: "#00D4FF", pos: [viewport.width / 4, -viewport.height / 4, -2], size: 3, opacity: 0.08 },
-    { color: "#7000FF", pos: [0, 0, -3], size: 5, opacity: 0.05 },
-  ], [viewport]);
-
-  return (
-    <>
-      {orbs.map((orb, i) => (
-        <mesh key={i} position={orb.pos as [number, number, number]}>
-          <planeGeometry args={[orb.size, orb.size]} />
-          <meshBasicMaterial
-            color={orb.color}
-            transparent
-            opacity={orb.opacity}
-            depthWrite={false}
-          />
-        </mesh>
-      ))}
-    </>
-  );
-}
-
-export default function ParticleField() {
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 60 }}
-        gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
-        dpr={[1, 1.5]} // Limit DPR on mobile for better performance
-      >
-        <Particles />
-        <GradientOrbs />
-      </Canvas>
-    </div>
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 pointer-events-none"
+      style={{ zIndex: 0 }}
+    />
   );
 }

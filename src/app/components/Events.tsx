@@ -6,7 +6,6 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 import TiltCard from "./TiltCard";
 import GlowText from "./GlowText";
-import ParticleField from "./ParticleField";
 import RollingText from "./RollingText";
 
 const svitCampus = new URL("../../assets/38cc7112b553bd6144b9a84e15b6b77217b38a0c.png", import.meta.url).href;
@@ -14,7 +13,7 @@ const svitCampus = new URL("../../assets/38cc7112b553bd6144b9a84e15b6b77217b38a0
 const categories = ["All", "Inauguration"];
 
 const events = [
-  { id: 1, title: "Inauguration Ceremony", date: "Apr 02, 2026", time: "10 AM - 1 PM", location: "SVIT Auditorium", category: "Inauguration", desc: "Grand inauguration of SVIT ACM Student Chapter. Join us for the official launch with keynote speeches, chapter introduction, and networking.", upcoming: true, img: svitCampus, color: "from-blue-500 to-cyan-400" },
+  { id: 1, title: "Inauguration Ceremony", date: "Apr 02, 2026", time: "10 AM - 1 PM", location: "SVIT Auditorium", category: "Inauguration", desc: "Grand inauguration of SVIT ACM Student Chapter. Join us for the official launch with keynote speeches, chapter introduction, and networking.", upcoming: false, img: svitCampus, color: "from-blue-500 to-cyan-400" },
 ];
 
 export default function Events() {
@@ -29,7 +28,6 @@ export default function Events() {
     <div className="bg-[#050510] text-white overflow-hidden" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
       {/* Hero */}
       <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
-        <ParticleField />
         <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-[120px]" />
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="relative z-10 text-center px-4">
           <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">Events</span>
@@ -40,8 +38,8 @@ export default function Events() {
         </motion.div>
       </section>
 
-      <section className="py-16 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 relative bg-[#050510]">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Tabs */}
           <div className="flex justify-center mb-8">
             <div className="inline-flex bg-white/5 rounded-xl p-1 border border-white/5">
@@ -87,7 +85,7 @@ export default function Events() {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.05 }}
-                      className="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl overflow-hidden hover:border-white/[0.15] transition-all group h-full"
+                      className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all group h-full"
                     >
                       {/* Image or gradient placeholder */}
                       {e.img ? (

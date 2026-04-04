@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "motion/react";
 import { Calendar, Clock, MapPin, Users, Sparkles, ArrowLeft } from "lucide-react";
 import { Link } from "react-router";
 import GlowText from "./GlowText";
-import ParticleField from "./ParticleField";
 import TiltCard from "./TiltCard";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import svitCampus from "../../assets/38cc7112b553bd6144b9a84e15b6b77217b38a0c.png";
@@ -39,7 +38,6 @@ export default function EventDetails() {
     <div className="bg-[#050510] min-h-screen text-white overflow-hidden" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
       {/* Particle Background */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-50">
-        <ParticleField />
         <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#0066FF]/10 rounded-full blur-[150px]" />
         <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#00D4FF]/10 rounded-full blur-[120px]" />
       </div>

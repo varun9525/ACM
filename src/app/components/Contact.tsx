@@ -3,7 +3,6 @@ import { motion } from "motion/react";
 import { Mail, MapPin, Phone, Send, CheckCircle, ArrowRight } from "lucide-react";
 import TiltCard from "./TiltCard";
 import GlowText from "./GlowText";
-import ParticleField from "./ParticleField";
 import RollingText from "./RollingText";
 
 export default function Contact() {
@@ -19,7 +18,6 @@ export default function Contact() {
     <div className="bg-[#050510] text-white overflow-hidden" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
       {/* Hero */}
       <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
-        <ParticleField />
         <div className="absolute top-1/3 right-1/3 w-80 h-80 bg-[#0066FF]/10 rounded-full blur-[120px]" />
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="relative z-10 text-center px-4">
           <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">Get In Touch</span>
@@ -30,7 +28,7 @@ export default function Contact() {
         </motion.div>
       </section>
 
-      <section className="py-20 relative">
+      <section className="py-20 relative bg-[#050510]">
         <div className="absolute left-0 top-1/3 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[150px]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-5 gap-10">
           {/* Contact Info */}
@@ -52,7 +50,7 @@ export default function Contact() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.15] transition-all"
+                  className="flex items-start gap-4 p-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all"
                 >
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0066FF] to-[#00D4FF] flex items-center justify-center shrink-0 shadow-lg shadow-[#0066FF]/20">
                     <c.icon size={18} className="text-white" />
@@ -83,7 +81,7 @@ export default function Contact() {
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-3">
             {submitted ? (
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-                className="bg-white/[0.03] backdrop-blur-sm rounded-2xl border border-white/[0.06] p-12 text-center h-full flex flex-col items-center justify-center"
+                className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-12 text-center h-full flex flex-col items-center justify-center"
               >
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-green-500 flex items-center justify-center mx-auto mb-5 shadow-lg shadow-green-500/20">
                   <CheckCircle size={36} className="text-white" />
@@ -98,7 +96,7 @@ export default function Contact() {
                 </button>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-white/[0.03] backdrop-blur-sm rounded-2xl border border-white/[0.06] p-8">
+              <form onSubmit={handleSubmit} className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8">
                 <h3 style={{ fontSize: 20, fontWeight: 700, fontFamily: "'Orbitron', sans-serif" }} className="text-white mb-6">Send a Message</h3>
 
                 <div className="grid sm:grid-cols-2 gap-4 mb-4">

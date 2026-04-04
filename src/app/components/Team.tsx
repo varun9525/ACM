@@ -2,7 +2,6 @@ import { motion } from "motion/react";
 import { Linkedin, Github, Mail } from "lucide-react";
 import TiltCard from "./TiltCard";
 import GlowText from "./GlowText";
-import ParticleField from "./ParticleField";
 import acmLogo from "../../assets/d16feed6d1c3e6975f13d701bab37fa53bf54d76.png";
 import shrinaPatelImg from "../../assets/shrina_patel.jpg";
 import jaynaShahImg from "../../assets/jayna_shah.jpeg";
@@ -81,7 +80,6 @@ export default function Team() {
     <div className="bg-[#050510] text-white overflow-hidden" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
       {/* Hero */}
       <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
-        <ParticleField />
         <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-purple-500/10 rounded-full blur-[120px]" />
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="relative z-10 text-center px-4">
           <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">Our Team</span>
@@ -96,8 +94,8 @@ export default function Team() {
       </section>
 
       {/* Faculty */}
-      <section className="py-20 relative">
-        <div className="max-w-4xl mx-auto px-4">
+      <section className="py-20 relative bg-[#050510]">
+        <div className="relative max-w-4xl mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">Mentors</span>
             <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl text-white">ACM Faculty</h2>
@@ -108,7 +106,7 @@ export default function Team() {
             {acmFaculty.map((f, i) => (
               <TiltCard key={f.name}>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="bg-[#1b233d] rounded-[20px] w-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                  className="bg-white/5 backdrop-blur-md rounded-[20px] w-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 border border-white/10"
                 >
                   <div className="relative h-[380px] w-full overflow-hidden bg-gray-200">
                     {f.image ? (
@@ -148,7 +146,7 @@ export default function Team() {
             {faculty.map((f, i) => (
               <TiltCard key={f.name}>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i + 1) * 0.1 }}
-                  className="bg-[#1b233d] rounded-[20px] w-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                  className="bg-white/5 backdrop-blur-md rounded-[20px] w-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 border border-white/10"
                 >
                   <div className="relative h-[380px] w-full overflow-hidden bg-gray-200">
                     {f.image ? (
@@ -182,7 +180,7 @@ export default function Team() {
       </section>
 
       {/* Core Team */}
-      <section className="py-20 relative">
+      <section className="py-20 relative bg-[#050510]">
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#0066FF]/5 rounded-full blur-[150px]" />
         <div className="relative max-w-5xl mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
@@ -196,7 +194,7 @@ export default function Team() {
             {coreTeam.map((m, i) => (
               <TiltCard key={m.name} className="h-full">
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="bg-[#1b233d] rounded-[20px] w-full h-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col"
+                  className="bg-white/5 backdrop-blur-md rounded-[20px] w-full h-full shadow-lg relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col border border-white/10"
                 >
                   <div className={`relative h-[380px] w-full overflow-hidden bg-gradient-to-br ${m.color}`}>
                     {m.image ? (

@@ -3,7 +3,6 @@ import { Target, Eye, Heart, Award, Globe, Zap } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import TiltCard from "./TiltCard";
 import GlowText from "./GlowText";
-import ParticleField from "./ParticleField";
 import acmTextLogo from "../../../acm_4c_grad_vtag_b_pos_white_text.svg";
 import svitCampus from "../../assets/38cc7112b553bd6144b9a84e15b6b77217b38a0c.png";
 
@@ -26,7 +25,6 @@ export default function About() {
     <div className="bg-[#050510] text-white overflow-hidden" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <ParticleField />
         <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-[#0066FF]/15 rounded-full blur-[120px]" />
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="relative z-10 text-center px-4">
           <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">About Us</span>
@@ -41,7 +39,7 @@ export default function About() {
       </section>
 
       {/* What is ACM */}
-      <section className="py-24 relative">
+      <section className="py-24 relative bg-[#050510]">
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[150px]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
           <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -70,30 +68,28 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
+      <section className="py-24 relative bg-[#050510]">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
           {[
             { icon: Target, title: "Our Mission", text: "To foster a community where students can explore, learn, and excel in computing. We bridge the gap between academics and industry through hands-on learning, mentorship, and collaborative projects.", color: "from-blue-500 to-cyan-400" },
             { icon: Eye, title: "Our Vision for SVIT", text: "Our goal is to foster a strong coding culture and bridge the gap between academic learning and industry standards. Through workshops, hackathons, and guest lectures, the ACM SVIT chapter aims to empower students to build real-world solutions.", color: "from-purple-500 to-pink-500" },
           ].map((item, i) => (
-            <TiltCard key={item.title}>
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 hover:border-white/[0.15] transition-all h-full"
-              >
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 shadow-lg`}>
-                  <item.icon size={26} className="text-white" />
-                </div>
-                <h3 style={{ fontSize: 22, fontWeight: 700 }} className="text-white mb-3">{item.title}</h3>
-                <p style={{ fontSize: 15 }} className="text-white/35 leading-relaxed">{item.text}</p>
-              </motion.div>
-            </TiltCard>
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all"
+            >
+              <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 shadow-lg`}>
+                <item.icon size={26} className="text-white" />
+              </div>
+              <h3 style={{ fontSize: 22, fontWeight: 700 }} className="text-white mb-3">{item.title}</h3>
+              <p style={{ fontSize: 15 }} className="text-white/35 leading-relaxed">{item.text}</p>
+            </motion.div>
           ))}
         </div>
       </section>
 
       {/* Values */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 relative bg-[#050510]">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 3, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]/70 uppercase mb-4 block">Our Values</span>
             <h2 style={{ fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-3xl sm:text-4xl text-white">
@@ -102,24 +98,22 @@ export default function About() {
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {values.map((v, i) => (
-              <TiltCard key={v.title}>
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-6 text-center hover:border-white/[0.15] transition-all h-full"
-                >
-                  <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${v.color} flex items-center justify-center mx-auto mb-4 shadow-lg`}>
-                    <v.icon size={28} className="text-white" />
-                  </div>
-                  <h3 style={{ fontSize: 16, fontWeight: 700 }} className="text-white mb-2">{v.title}</h3>
-                  <p style={{ fontSize: 13 }} className="text-white/30">{v.desc}</p>
-                </motion.div>
-              </TiltCard>
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 text-center hover:border-white/20 transition-all"
+              >
+                <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${v.color} flex items-center justify-center mx-auto mb-4 shadow-lg`}>
+                  <v.icon size={28} className="text-white" />
+                </div>
+                <h3 style={{ fontSize: 16, fontWeight: 700 }} className="text-white mb-2">{v.title}</h3>
+                <p style={{ fontSize: 13 }} className="text-white/30">{v.desc}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Timeline */}
-      <section className="py-24 relative">
+      <section className="py-24 relative bg-[#050510]">
         <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-[500px] h-[500px] bg-[#0066FF]/5 rounded-full blur-[150px]" />
         <div className="relative max-w-3xl mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
@@ -151,9 +145,11 @@ export default function About() {
                 </div>
 
                 <div className={`ml-16 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-14 md:text-right" : "md:pl-14"}`}>
-                  <span style={{ fontSize: 13, fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]">{t.year}</span>
-                  <h3 style={{ fontSize: 16, fontWeight: 700 }} className="text-white mt-1">{t.title}</h3>
-                  <p style={{ fontSize: 13 }} className="text-white/30 mt-1">{t.desc}</p>
+                  <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5">
+                    <span style={{ fontSize: 13, fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-[#00D4FF]">{t.year}</span>
+                    <h3 style={{ fontSize: 16, fontWeight: 700 }} className="text-white mt-1">{t.title}</h3>
+                    <p style={{ fontSize: 13 }} className="text-white/30 mt-1">{t.desc}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}

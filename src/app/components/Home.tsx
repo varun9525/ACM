@@ -1,8 +1,7 @@
 import { Link } from "react-router";
 import { ArrowRight, Users, Calendar } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef, lazy, Suspense } from "react";
-const ParticleField = lazy(() => import("./ParticleField"));
+import { useRef } from "react";
 import TiltCard from "./TiltCard";
 import GlowText from "./GlowText";
 import AnimatedCounter from "./AnimatedCounter";
@@ -44,10 +43,6 @@ export default function Home() {
     <div className="bg-[#050510] text-white overflow-hidden" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
       {/* ===== HERO ===== */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <Suspense fallback={<div className="absolute inset-0 bg-[#050510]" />}>
-          <ParticleField />
-        </Suspense>
-
         {/* Grid overlay */}
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
@@ -90,7 +85,7 @@ export default function Home() {
       </section>
 
       {/* ===== STATS ===== */}
-      <section className="relative py-20">
+      <section className="relative py-20 bg-[#050510]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#050510] via-[#0a0a1a] to-[#050510]" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -101,7 +96,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 text-center hover:border-[#0066FF]/30 transition-colors"
+                  className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 text-center hover:border-white/20 transition-colors"
                 >
                   <s.icon size={26} className="mx-auto mb-3 text-[#00D4FF]" />
                   <div style={{ fontSize: 36, fontWeight: 800, fontFamily: "'Orbitron', sans-serif" }} className="text-white">
@@ -116,7 +111,7 @@ export default function Home() {
       </section>
 
       {/* ===== ABOUT PREVIEW ===== */}
-      <section className="py-28 relative">
+      <section className="py-28 relative bg-[#050510]">
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#0066FF]/10 rounded-full blur-[150px]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
@@ -154,7 +149,7 @@ export default function Home() {
       </section>
 
       {/* ===== EVENTS ===== */}
-      <section className="py-28 relative">
+      <section className="py-28 relative bg-[#050510]">
         <div className="absolute left-1/3 top-0 w-[400px] h-[400px] bg-[#0066FF]/8 rounded-full blur-[150px]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-end justify-between mb-14">
@@ -177,7 +172,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl overflow-hidden hover:border-white/[0.15] transition-all group h-full"
+                  className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all group h-full"
                 >
                   {/* Top gradient strip */}
                   <div className={`h-1.5 bg-gradient-to-r ${e.color}`} />
@@ -206,7 +201,7 @@ export default function Home() {
       <section className="py-16 relative overflow-hidden">
         <div className="flex gap-4 animate-scroll">
           {[...eventGalleryImages, ...eventGalleryImages].map((img, i) => (
-            <div key={i} className="shrink-0 w-72 h-44 rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-sm opacity-80 hover:opacity-100 transition-opacity">
+            <div key={i}               className="shrink-0 w-72 h-44 rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md opacity-90 hover:opacity-100 transition-opacity">
               <ImageWithFallback src={img.src} alt={img.alt} className="w-full h-full object-cover" />
             </div>
           ))}
